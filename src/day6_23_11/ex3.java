@@ -13,6 +13,11 @@ public class ex3 {
         }
     }
 
+    /**
+     * Metoda initAray imi intoarce un array cu primele Limit numere divizibile cu 11
+     * @param limit reprezinta care nr sa imi contna array-ul
+     * @return un array cu primele 100 de nr divizibile cu 11
+     */
     private static int[] initArray(int limit) {
         int[] array = new int[limit];
         int count = 0;
