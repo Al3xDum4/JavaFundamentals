@@ -62,6 +62,9 @@ public class Problema12 {
                 case 6:
                     Punct6(scan);
                     break;
+                case 10:
+                    Punct10(scan);
+                    break;
                 case 0:
                     break;
                 default:
@@ -145,6 +148,34 @@ public class Problema12 {
         System.out.println("numere pare: " + countEven(array));
         System.out.println("numere impare: " + countOdd(array));
         System.out.println();
+    }
+
+    public static void Punct10(Scanner scan) {
+        //Create a program that reads two numbers. Then create another method that can print a rectangle of the size given by the parameter. Create also another method that can print the rectangle and the diagonals
+        System.out.println("Citim lungimea: ");
+        int lungimea = scan.nextInt();
+        System.out.println("Citim latimea: ");
+        int latimea = scan.nextInt();
+
+        for (int i = 0; i < latimea; i++) {
+            if (i == 0 || i == latimea - 1) {
+                for (int j = 0; j < lungimea; j++) {
+                    System.out.print("*");
+                }
+            } else {
+                for (int j = 0; j < lungimea; j++) {
+
+                    if (j == 0 || j == lungimea - 1) {
+                        System.out.print("*");
+                    }
+                    else{
+                        System.out.print(" ");
+                    }
+                }
+            }
+            System.out.println();
+
+        }
     }
 
     public static int[] readArray(Scanner scan, int size) {
@@ -238,5 +269,6 @@ public class Problema12 {
     public static int countOdd(int[] array) {
         return array.length - countEven(array);
     }
+
 }
 
