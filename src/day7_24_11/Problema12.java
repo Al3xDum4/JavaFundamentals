@@ -54,6 +54,9 @@ public class Problema12 {
                 case 4:
                     Punct4(scan);
                     break;
+                case 5:
+                    Punct5(scan);
+                    break;
                 case 0:
                     break;
                 default:
@@ -67,6 +70,8 @@ public class Problema12 {
         Punct2(scan);
         Punct3(scan);
         Punct4(scan);
+        Punct5(scan);
+
     }
 
     public static void Punct1(Scanner scan) {
@@ -123,6 +128,17 @@ public class Problema12 {
         System.out.println();
     }
 
+    public static void Punct5(Scanner scan) {
+        // Write a Java program to find the second largest element in an array.
+        System.out.println("Dati dimensiune: ");
+        int dim = scan.nextInt();
+        int[] array = readArray(scan, dim);
+        System.out.println("Al doilea maxim din array: ");
+        System.out.println(largestNumber(extractElement(array, largestNumber(array))));
+        System.out.println();
+        // extrage cel mai mare el. din array...
+    }
+
     public static int[] readArray(Scanner scan, int size) {
         int[] array = new int[size];
         for (int i = 0; i < size; i++) {
@@ -171,6 +187,32 @@ public class Problema12 {
             }
             newArray[k] = array[i];
             k++;
+        }
+        return newArray;
+    }
+
+    public static int largestNumber(int[] array) {
+        int maxValue = Integer.MIN_VALUE;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > maxValue) { //comparam elementele din array
+                maxValue = array[i];
+            }
+        }
+        return maxValue;
+    }
+
+    public static int[] extractElement(int[] array, int value) {
+        int[] newArray = new int[array.length - 1];
+        int count = 0;
+        for (int i = 0; i < array.length; i++) {
+            {
+                if (array[i] == value) {
+                    continue;
+                } else {
+                    newArray[count] = array[i];
+                    count++;
+                }
+            }
         }
         return newArray;
     }
