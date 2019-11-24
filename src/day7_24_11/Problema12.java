@@ -30,11 +30,41 @@ public class Problema12 {
      */
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
+        int optiune;
+        do {
+
+            System.out.println("1.Write a Java program to sum values of an array. Read the size and read the numbers\n" +
+                    "2.Write a Java program to calculate the average value of array elements\n" +
+                    "3.Write a Java program to remove a specific element from an array. Also change the size of the array\n" +
+                    "4.Write a Java program to insert an element (specific position) into an array\n\n" +
+                    "0.Exit\n");
+            System.out.println("Select an option: ");
+            optiune = Integer.parseInt(scan.next());
+
+            switch (optiune) {
+                case 1:
+                    PunctA(scan);
+                    break;
+                case 2:
+                    PunctB(scan);
+                    break;
+                case 3:
+                    PunctC(scan);
+                    break;
+                case 4:
+                    PunctD(scan);
+                    break;
+                case 0:
+
+            }
+        } while (optiune != 0);
+
         PunctA(scan);
         PunctB(scan);
         PunctC(scan);
         PunctD(scan);
     }
+
     public static void PunctA(Scanner scan) {
         //   1.Write a Java program to sum values of an array. Read the size and read the numbers
         System.out.print("Dimensiune array(pct1): ");
@@ -42,14 +72,16 @@ public class Problema12 {
         int[] array = readArray(scan, dim);
         System.out.println("1.Suma este: " + sumaArray(array));
     }
+
     public static void PunctB(Scanner scan) {
         //   2.Write a Java program to calculate the average value of array elements
         System.out.print("Dimensiune array(pct2): ");
         int dim = scan.nextInt();
         int[] array = readArray(scan, dim);
-        int avg = sumaArray(array) / dim;
-        System.out.println("2.Average value: " + avg);
+        double avg = (double) sumaArray(array) / dim;
+        System.out.printf("2.Average value: %.2f\n", avg);
     }
+
     public static void PunctC(Scanner scan) {
         //   3. Write a Java program to remove a specific element from an array. Also change the size of the array
         System.out.print("Dimensiune array(pct3): ");
@@ -64,6 +96,7 @@ public class Problema12 {
         System.out.println("Dimensiunea finala: " + array.length);
         printArray(array);
     }
+
     public static void PunctD(Scanner scan) {
         //   4.Write a Java program to insert an element (specific position) into an array
         System.out.print("Dimensiune array(pct4): ");
@@ -75,12 +108,13 @@ public class Problema12 {
         System.out.print("Dati indexul elementului: ");
         int index = scan.nextInt();
         System.out.print("Dati valoarea: ");
-        int value=scan.nextInt();
-        array = addPosition(array, index,value);
+        int value = scan.nextInt();
+        array = addPosition(array, index, value);
         System.out.print("Dimensiunea finala: " + array.length);
         System.out.println();
         printArray(array);
     }
+
     public static int[] readArray(Scanner scan, int size) {
         int[] array = new int[size];
         for (int i = 0; i < size; i++) {
@@ -89,12 +123,14 @@ public class Problema12 {
         }
         return array;
     }
+
     public static void printArray(int[] array) {
         System.out.print("array[]= ");
         for (int i = 0; i < array.length; i++) {
             System.out.print(array[i] + " ");
         }
     }
+
     public static int sumaArray(int[] array) {
         int sum = 0;
         for (int i = 0; i < array.length; i++) {
@@ -102,6 +138,7 @@ public class Problema12 {
         }
         return sum;
     }
+
     public static int[] extractPosition(int[] array, int index) {
         int[] newArray = new int[array.length - 1];
         int k = 0;
@@ -115,6 +152,7 @@ public class Problema12 {
         }
         return newArray;
     }
+
     public static int[] addPosition(int[] array, int index, int value) {
         int[] newArray = new int[array.length + 1];
         int k = 0;
