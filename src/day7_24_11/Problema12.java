@@ -43,46 +43,52 @@ public class Problema12 {
 
             switch (optiune) {
                 case 1:
-                    PunctA(scan);
+                    Punct1(scan);
                     break;
                 case 2:
-                    PunctB(scan);
+                    Punct2(scan);
                     break;
                 case 3:
-                    PunctC(scan);
+                    Punct3(scan);
                     break;
                 case 4:
-                    PunctD(scan);
+                    Punct4(scan);
                     break;
                 case 0:
-
+                    break;
+                default:
+                    System.out.println("Optiune incorecta");
+                    System.out.println();
+                    continue;
             }
         } while (optiune != 0);
 
-        PunctA(scan);
-        PunctB(scan);
-        PunctC(scan);
-        PunctD(scan);
+        Punct1(scan);
+        Punct2(scan);
+        Punct3(scan);
+        Punct4(scan);
     }
 
-    public static void PunctA(Scanner scan) {
+    public static void Punct1(Scanner scan) {
         //   1.Write a Java program to sum values of an array. Read the size and read the numbers
         System.out.print("Dimensiune array(pct1): ");
         int dim = scan.nextInt();
         int[] array = readArray(scan, dim);
         System.out.println("1.Suma este: " + sumaArray(array));
+        System.out.println();
     }
 
-    public static void PunctB(Scanner scan) {
+    public static void Punct2(Scanner scan) {
         //   2.Write a Java program to calculate the average value of array elements
         System.out.print("Dimensiune array(pct2): ");
         int dim = scan.nextInt();
         int[] array = readArray(scan, dim);
         double avg = (double) sumaArray(array) / dim;
         System.out.printf("2.Average value: %.2f\n", avg);
+        System.out.println();
     }
 
-    public static void PunctC(Scanner scan) {
+    public static void Punct3(Scanner scan) {
         //   3. Write a Java program to remove a specific element from an array. Also change the size of the array
         System.out.print("Dimensiune array(pct3): ");
         int dim = scan.nextInt();
@@ -95,9 +101,10 @@ public class Problema12 {
         array = extractPosition(array, index);
         System.out.println("Dimensiunea finala: " + array.length);
         printArray(array);
+        System.out.println();
     }
 
-    public static void PunctD(Scanner scan) {
+    public static void Punct4(Scanner scan) {
         //   4.Write a Java program to insert an element (specific position) into an array
         System.out.print("Dimensiune array(pct4): ");
         int dim = scan.nextInt();
@@ -113,6 +120,7 @@ public class Problema12 {
         System.out.print("Dimensiunea finala: " + array.length);
         System.out.println();
         printArray(array);
+        System.out.println();
     }
 
     public static int[] readArray(Scanner scan, int size) {
