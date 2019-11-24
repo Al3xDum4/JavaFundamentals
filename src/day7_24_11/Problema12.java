@@ -37,6 +37,8 @@ public class Problema12 {
                     "2.Write a Java program to calculate the average value of array elements\n" +
                     "3.Write a Java program to remove a specific element from an array. Also change the size of the array\n" +
                     "4.Write a Java program to insert an element (specific position) into an array\n\n" +
+                    "5.Write a Java program to find the second largest element in an array\n" +
+                    "6.Write a Java program to find the number of even and odd integers in a given array of integers\n" +
                     "0.Exit\n");
             System.out.println("Select an option: ");
             optiune = Integer.parseInt(scan.next());
@@ -57,6 +59,9 @@ public class Problema12 {
                 case 5:
                     Punct5(scan);
                     break;
+                case 6:
+                    Punct6(scan);
+                    break;
                 case 0:
                     break;
                 default:
@@ -65,13 +70,6 @@ public class Problema12 {
                     continue;
             }
         } while (optiune != 0);
-
-        Punct1(scan);
-        Punct2(scan);
-        Punct3(scan);
-        Punct4(scan);
-        Punct5(scan);
-
     }
 
     public static void Punct1(Scanner scan) {
@@ -137,6 +135,16 @@ public class Problema12 {
         System.out.println(largestNumber(extractElement(array, largestNumber(array))));
         System.out.println();
         // extrage cel mai mare el. din array...
+    }
+
+    public static void Punct6(Scanner scan) {
+        //Write a Java program to find the number of even and odd integers in a given array of integers
+        System.out.println("Dati dimensiune: ");
+        int dim = scan.nextInt();
+        int[] array = readArray(scan, dim);
+        System.out.println("numere pare: " + countEven(array));
+        System.out.println("numere impare: " + countOdd(array));
+        System.out.println();
     }
 
     public static int[] readArray(Scanner scan, int size) {
@@ -216,4 +224,19 @@ public class Problema12 {
         }
         return newArray;
     }
+
+    public static int countEven(int[] array) {
+        int even = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] % 2 == 0) {
+                even++;
+            }
+        }
+        return even;
+    }
+
+    public static int countOdd(int[] array) {
+        return array.length - countEven(array);
+    }
 }
+
