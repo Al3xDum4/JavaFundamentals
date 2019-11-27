@@ -2,7 +2,7 @@ package day7_24_11;
 
 import java.util.Scanner;
 
-public class Problema12 {
+public class Problema12<newArray> {
     /*
     12. Create an application with a menu and with accepting parameters when starting.
         We are going to create a jar and run it with some arguments.
@@ -32,13 +32,18 @@ public class Problema12 {
         Scanner scan = new Scanner(System.in);
         int optiune;
         do {
-
+            System.out.println();
+            System.out.println();
             System.out.println("1.Write a Java program to sum values of an array. Read the size and read the numbers\n" +
                     "2.Write a Java program to calculate the average value of array elements\n" +
                     "3.Write a Java program to remove a specific element from an array. Also change the size of the array\n" +
                     "4.Write a Java program to insert an element (specific position) into an array\n\n" +
                     "5.Write a Java program to find the second largest element in an array\n" +
                     "6.Write a Java program to find the number of even and odd integers in a given array of integers\n" +
+                    "7.Write a Java program to compute the average value of an array of integers except the largest and smallest values\n" +
+                    "8.Write a Java program to cyclically rotate a given array clockwise by one\n" +
+                    "9.\n" +
+                    "10.Create a program that reads two numbers. Then create another method that can print a rectangle of the size given by the parameter. Create also another method that can print the rectangle and the diagonals\n" +
                     "0.Exit\n");
             System.out.println("Select an option: ");
             optiune = Integer.parseInt(scan.next());
@@ -61,6 +66,12 @@ public class Problema12 {
                     break;
                 case 6:
                     Punct6(scan);
+                    break;
+                case 7:
+                    Punct7(scan);
+                    break;
+                case 8:
+                    Punct8(scan);
                     break;
                 case 10:
                     Punct10(scan);
@@ -150,6 +161,52 @@ public class Problema12 {
         System.out.println();
     }
 
+    public static void Punct7(Scanner scan) {
+        //Write a Java program to compute the average value of an array of integers except the largest and smallest values
+        System.out.print("Dimensiune array(pct7): ");
+        int dim = scan.nextInt();
+        int[] array = readArray(scan, dim);
+        System.out.println("Dimens initiala este: " + array.length);
+        printArray(array);
+        System.out.println();
+        array = extractElement(array, largestNumber(array));
+        array = extractElement(array, smallestNumber(array));
+        System.out.println("Dimensiunea finala: " + array.length);
+        printArray(array);
+        System.out.println();
+        double avg = (double) sumaArray(array) / dim;
+        System.out.printf("2.Average value: %.2f\n", avg);
+        System.out.println();
+    }
+
+    /*public static void Punct8(Scanner scan) {
+        //Write a Java program to cyclically rotate a given array clockwise by one
+        System.out.print("Dimensiune array(pct8): ");
+        int dim = scan.nextInt();
+        int[] array = readArray(scan, dim);
+        System.out.println("Dimens initiala este: " + array.length);
+        System.out.print("Array-ul initial este: ");
+        printArray(array);
+        System.out.println();
+        int count = array.length;
+        rotateArray(array, count);
+        printArray(array);
+    }*/
+
+    public static void Punct8(Scanner scan) {
+        System.out.print("Dimensiune array(pct8): ");
+        int dim = scan.nextInt();
+        int[] array = readArray(scan, dim);
+        printArray(array);
+        System.out.println();
+        int count = 0;
+        System.out.println("Rotatiile array-ului sunt:");
+        while (count < dim) {
+            rotateArray(array);
+            count++;
+        }
+    }
+
     public static void Punct10(Scanner scan) {
         //Create a program that reads two numbers. Then create another method that can print a rectangle of the size given by the parameter. Create also another method that can print the rectangle and the diagonals
         System.out.println("Citim lungimea: ");
@@ -167,8 +224,7 @@ public class Problema12 {
 
                     if (j == 0 || j == lungimea - 1) {
                         System.out.print("*");
-                    }
-                    else{
+                    } else {
                         System.out.print(" ");
                     }
                 }
@@ -240,6 +296,16 @@ public class Problema12 {
         return maxValue;
     }
 
+    public static int smallestNumber(int[] array) {
+        int minValue = Integer.MAX_VALUE;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] < minValue) {
+                minValue = array[i];
+            }
+        }
+        return minValue;
+    }
+
     public static int[] extractElement(int[] array, int value) {
         int[] newArray = new int[array.length - 1];
         int count = 0;
@@ -267,8 +333,52 @@ public class Problema12 {
     }
 
     public static int countOdd(int[] array) {
+
         return array.length - countEven(array);
     }
 
+    /*public static int[] rotateArray(int[] array, int count) {
+        int[] newArray = new int[array.length];
+        while (count < array.length) {
+            int temp = array[array.length - 1];
+            for (int i = array.length - 1; i > 0; i--) {
+                array[i] = array[i - 1];
+            }
+            array[0] = temp;
+            newArray[count] = array[temp];
+            count++;
+            System.out.println();
+            for (int i = 0; i < array.length; i++) {
+                System.out.print(array[i] + " ");
+            }
+        }
+        return newArray;
+    }*/
+    /*public static int[] rotateArray(int[] array) {
+        int[] newArray = new int[array.length];
+        int k = 1;
+        newArray[0]=array[array.length-1];
+        for (int i = 0; i < array.length-1 ; i++) {
+            newArray[k] = array[i];
+            k++;        }
+        return newArray;
+    }*/
+    public static void rotateArray(int[] array) {
+        int temp = array[array.length - 1];
+        for (int i = array.length - 1; i > 0; i--) {
+            array[i] = array[i - 1];
+        }
+        array[0] = temp;
+        //count++;
+        System.out.println();
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+    }
 }
+
+
+
+
+
 
