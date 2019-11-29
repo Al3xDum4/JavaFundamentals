@@ -42,8 +42,9 @@ public class Problema12<newArray> {
                     "6.Write a Java program to find the number of even and odd integers in a given array of integers\n" +
                     "7.Write a Java program to compute the average value of an array of integers except the largest and smallest values\n" +
                     "8.Write a Java program to cyclically rotate a given array clockwise by one\n" +
-                    "9.\n" +
+                    "9.Create a program that reads a number in a method. Then create another method that can print a reverse triangle of the size given by the parameter\n" +
                     "10.Create a program that reads two numbers. Then create another method that can print a rectangle of the size given by the parameter. Create also another method that can print the rectangle and the diagonals\n" +
+                    "11.Read a seuqnce of numbers separated by space. Print the sum of them and product. Also the difference between the biggest and the smallest\n"+
                     "0.Exit\n");
             System.out.println("Select an option: ");
             optiune = Integer.parseInt(scan.next());
@@ -73,8 +74,14 @@ public class Problema12<newArray> {
                 case 8:
                     Punct8(scan);
                     break;
+                case 9:
+                    Punct9(scan);
+                    break;
                 case 10:
                     Punct10(scan);
+                    break;
+                case 11:
+                    Punct11(scan);
                     break;
                 case 0:
                     break;
@@ -207,6 +214,13 @@ public class Problema12<newArray> {
         }
     }
 
+    public static void Punct9(Scanner scan) {
+        //Create a program that reads a number in a method. Then create another method that can print a reverse triangle of the size given by the parameter
+        System.out.println("Dati numarul: ");
+        int n = scan.nextInt();
+        reverseTriangle(n);
+    }
+
     public static void Punct10(Scanner scan) {
         //Create a program that reads two numbers. Then create another method that can print a rectangle of the size given by the parameter. Create also another method that can print the rectangle and the diagonals
         System.out.println("Citim lungimea: ");
@@ -232,6 +246,11 @@ public class Problema12<newArray> {
             System.out.println();
 
         }
+    }
+
+    public static void Punct11(Scanner scan){
+        //Read a seuqnce of numbers separated by space. Print the sum of them and product. Also the difference between the biggest and the smallest.
+
     }
 
     public static int[] readArray(Scanner scan, int size) {
@@ -373,6 +392,27 @@ public class Problema12<newArray> {
         System.out.println();
         for (int i = 0; i < array.length; i++) {
             System.out.print(array[i] + " ");
+        }
+    }
+
+    public static void reverseTriangle(int n) {
+        for (int i = n; i > 0; i--) {
+            for (int j = 1; j <= n - i; j++) {
+                System.out.print(" ");
+            }
+            if (i == 1 || i == n)
+                for (int j = 1; j <= i * 2 - 1; j++) {
+                    System.out.print("*");
+                }
+            else {
+                for (int j = 1; j <= i * 2 - 1; j++) {
+                    if (j == 1 || j == i * 2 - 1)
+                        System.out.print("*");
+                    else
+                        System.out.print(" ");
+                }
+            }
+            System.out.println();
         }
     }
 }
